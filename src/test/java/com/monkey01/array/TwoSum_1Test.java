@@ -17,8 +17,9 @@ public class TwoSum_1Test {
 		int[] nums = {2,11,7,15};
 		TwoSum_1 test = new TwoSum_1();
 		int[] result = test.twoSum(nums, 9);
-		int[] expectResult = {0,2};
-		Assert.assertEquals(expectResult,result);
+		Assert.assertEquals(0,result[0]);
+		Assert.assertEquals(2,result[1]);
+
 		System.out.println("result: "+result[0]+","+result[1]);
 	}
 
