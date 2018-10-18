@@ -1,6 +1,8 @@
 package com.monkey01.array;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -21,7 +23,47 @@ public class ThreeSum_15 {
 
 	public List<List<Integer>> threeSum(int[] nums) {
 		List<List<Integer>> resultList = new ArrayList<List<Integer>>();
+		if(nums.length<3){
+			return resultList;
+		}
 
+		int target = 0;
+
+		//先对数据进行从小到大排序，再进行夹击查找
+		Arrays.sort(nums);
+		int j,k;
+		for(int i=0;i<nums.length-2;i++){
+			j = i + 1;
+			//跳过重复的数
+			if(i>0 && nums[i]==nums[i-1]){
+				continue;
+			}
+			k = nums.length-1;
+			while(j<k){
+				if(nums[i]+nums[j]+nums[k]<target){
+					j++;//j右移动,取右边大数值
+					while(nums[j]==nums[j-1] && j<k){
+						j++;
+					}
+				}else if(nums[i]+nums[j]+nums[k]>target){
+					k--;
+					while(nums[k]==nums[k+1] && j<k){
+						k--;
+					}
+				}else{
+					List<Integer> result = new ArrayList<Integer>(3);
+					result.add(nums[i]);
+					result.add(nums[j]);
+					result.add(nums[k]);
+					resultList.add(result);
+					j++;
+					k--;
+					while(nums[j]==nums[j-1] && nums[k]==nums[k+1] && j<k){
+						j++;
+					}
+				}
+			}
+		}
 		return resultList;
 	}
 }
