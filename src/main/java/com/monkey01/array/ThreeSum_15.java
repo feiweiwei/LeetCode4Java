@@ -2,7 +2,6 @@ package com.monkey01.array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
